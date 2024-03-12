@@ -28,7 +28,7 @@ public class CartService implements CartServiceInterface {
 
     @Override
     public CartFetchDTO[] getCartsInADateRange(LocalDate startDate, LocalDate endDate) {
-         return restTemplate.getForObject("?startdate=" + startDate + "&enddate="+endDate, CartFetchDTO[].class);
+         return restTemplate.getForObject(url + "?startdate=" + startDate + "&enddate="+endDate, CartFetchDTO[].class);
     }
 
     @Override
@@ -39,18 +39,18 @@ public class CartService implements CartServiceInterface {
     @Override
     public CreateOrUpdateCartResponse addNewCart(Long userId, LocalDate date, ProductFetchDTO[] products) {
         CreateOrUpdateCartRequest requestBody = new CreateOrUpdateCartRequest(userId, date, products);
-        return restTemplate.postForObject("/", requestBody, CreateOrUpdateCartResponse.class);
+        return restTemplate.postForObject(url + "/", requestBody, CreateOrUpdateCartResponse.class);
     }
 
     @Override
     public void updateCart(Long cartId, Long userId, LocalDate date, ProductFetchDTO[] products) {
         CreateOrUpdateCartRequest requestBody = new CreateOrUpdateCartRequest(userId, date, products);
-        restTemplate.put("/" + cartId, requestBody);
+        restTemplate.put(url + "/" + cartId, requestBody);
     } 
     
     @Override
     public void deleteCart(Long id) {
-        restTemplate.delete("/" + id);
+        restTemplate.delete(url + "/" + id);
     }
     
 }

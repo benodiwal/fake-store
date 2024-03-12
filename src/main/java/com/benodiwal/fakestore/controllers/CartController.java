@@ -20,7 +20,7 @@ import com.benodiwal.fakestore.dtos.CreateOrUpdateCartResponse;
 import com.benodiwal.fakestore.services.CartService;
 
 @RestController
-@RequestMapping("/api/carts")
+@RequestMapping("/api")
 public class CartController {
     
     private CartService cartService;
@@ -29,38 +29,38 @@ public class CartController {
         this.cartService = cartService;
     }
     
-    @GetMapping("/")
+    @GetMapping("/carts/")
     public CartFetchDTO[] getCarts() {
         return cartService.getCarts();    
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/carts/{id}")
     public CartFetchDTO getProduct(@PathVariable Long id) {
         return cartService.getCart(id);
     }
 
-    @GetMapping("/")
-    public CartFetchDTO[] getCartsInADateRange(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
-        return cartService.getCartsInADateRange(startDate, endDate);
+    @GetMapping("/carts")
+    public CartFetchDTO[] getCartsInADateRange(@RequestParam LocalDate startdate, @RequestParam LocalDate enddate) {
+        return cartService.getCartsInADateRange(startdate, enddate);
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/carts/user/{userId}")
     public CartFetchDTO[] getCartsByUserId(@PathVariable Long userId) {
         return cartService.getCartsByUserId(userId);
     }
 
-    @PostMapping("/")
+    @PostMapping("/carts/")
     public CreateOrUpdateCartResponse postAddANewCart(@RequestBody CreateOrUpdateCartRequest body) {
         return cartService.addNewCart(body.userId, body.date, body.products);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/carts/{id}")
     public ResponseEntity<HttpStatus> patchUpdateACart(@PathVariable Long id, @RequestBody CreateOrUpdateCartRequest body) {
         cartService.updateCart(id, body.userId, body.date, body.products);
         return new ResponseEntity<HttpStatus>(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/carts/{id}")
     public ResponseEntity<HttpStatus> deleteCart(@PathVariable Long id) {
         return new ResponseEntity<HttpStatus>(HttpStatus.NO_CONTENT);
     }
