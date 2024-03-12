@@ -2,19 +2,6 @@
 
 ## API Endpoints
 
-### `products`
-- Get all products
-    ```http
-    GET /products/
-    ```
-    ![GET products](.github/assets/image-7.png)
-
-- Get Product by ID
-    ```http
-    GET /products/{id}/
-    ```
-    ![GET product by ID](.github/assets/image-6.png)
-
 ### `carts`
 - Get all carts
     ```http
