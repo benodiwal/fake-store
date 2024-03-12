@@ -20,7 +20,6 @@ import com.benodiwal.fakestore.dtos.CreateOrUpdateCartResponse;
 import com.benodiwal.fakestore.services.CartService;
 
 @RestController
-@RequestMapping("/api")
 public class CartController {
     
     private CartService cartService;
