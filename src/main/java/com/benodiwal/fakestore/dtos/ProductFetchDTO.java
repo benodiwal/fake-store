@@ -5,6 +5,12 @@ public class ProductFetchDTO {
     Long productId;
     int quantity;
 
+    
+
+    public ProductFetchDTO(Long productId, int quantity) {
+        this.productId = productId;
+        this.quantity = quantity;
+    }
     public Long getProductId() {
         return productId;
     }

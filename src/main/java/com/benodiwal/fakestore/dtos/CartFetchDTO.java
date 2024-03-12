@@ -8,6 +8,12 @@ public class CartFetchDTO {
     LocalDate date;
     ProductFetchDTO[] products;
 
+    public CartFetchDTO(Long id, Long userId, LocalDate date, ProductFetchDTO[] products) {
+        this.id = id;
+        this.userId = userId;
+        this.date = date;
+        this.products = products;
+    }
     public Long getId() {
         return id;
     }
